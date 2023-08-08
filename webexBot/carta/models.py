@@ -8,6 +8,10 @@ class TemaCarta(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        verbose_name='tema'
+        verbose_name_plural="temas"    
 
 
 
@@ -17,6 +21,10 @@ class SeccionCarta(models.Model):
     
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        verbose_name='sección'
+        verbose_name_plural="secciónes"
     
     
 class Carta(models.Model):
@@ -28,6 +36,10 @@ class Carta(models.Model):
     
     def __str__(self):
         return self.pregunta
+    
+    class Meta:
+        verbose_name='carta'
+        verbose_name_plural="cartas"
     
     
   

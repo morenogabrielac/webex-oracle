@@ -5,7 +5,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializer import CartaSerializer,TemaCartaSerializer,SeccionCartaSerializer
 from .models import Carta,TemaCarta,SeccionCarta
+
+
+from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
+
 
 class CartaViewSet(viewsets.ModelViewSet):
     queryset = Carta.objects.all()
@@ -38,4 +42,13 @@ class CartaConSeccion(APIView):
         return Response(data)
 
 class CartaPorTemaAPIView(generics.ListAPIView):
+    queryset = Carta.objects.all()
     serializer_class = CartaSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','seccion__tema']
+    
+class SeccionPorTemaAPIView(generics.ListAPIView):
+    queryset = SeccionCarta.objects.all()
+    serializer_class = SeccionCartaSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','tema']

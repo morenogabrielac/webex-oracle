@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'core',
+    'django_filters',    
     'carta'
 ]
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'webexBot.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '192.168.0.183:1521/XEPDB1',
@@ -88,7 +88,14 @@ DATABASES = {
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
     }
-}
+}"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+    
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -130,3 +137,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+   # 'DEFAULT_FILTER_BACKENDS' : ['django_filters_rest_framework-DjangoFilterBackend']
+}

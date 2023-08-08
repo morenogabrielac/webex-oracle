@@ -10,8 +10,9 @@ router.register(prefix=r'secciones',viewset=views.SeccionCartaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)), 
-    path('cartas/tema/<int:tema_nombre>/', views.CartaPorTemaAPIView.as_view(), name='cartas-por-tema'),
-    
+   # path('cartas/tema/<int:tema_nombre>/', views.CartaPorTemaAPIView.as_view(), name='cartas-por-tema'),
+    path('info/',views.CartaPorTemaAPIView.as_view(), name='cartas_con_filtro'),
+    path('info/secciones/',views.SeccionPorTemaAPIView.as_view(), name='secciones_con_filtro')
     
     
 ]
